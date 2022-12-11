@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript async / await</h2>
+
+
+
+    <script>
+        async function getFile() {
+            let myPromise = new Promise(function (resolve) {
+                let req = new XMLHttpRequest();
+                req.open('GET', "promise.html");
+                req.onload = function () {
+                    if (req.status == 200) {
+                        resolve(req.response);
+
+                    } else {
+                        resolve("File not Found");
+                    }
+                };
+                req.send();
+            });
+            let x = await myPromise;
+            document.write(x);
+        }
+
+        getFile();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #details
+        {
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            background-color: gray;
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            
+            
+        }
+    </style>
+</head>
+<body>
+    <form action="/adddetails" method="post">
+    <div class="a">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required />
+    </div>
+    <br />
+    <div class="a">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required />
+    </div>
+    <br>
+    <div class="a">
+        <label for="phone">Phone:</label>
+        <input type="number" name="phone" id="phone" />
+    </div>
+    <br>
+     <div class="a">
+    <label for="address">Address:</Address></label>
+    <textarea id="address" name="address" rows="4" cols="15"></textarea>
+    </div>
+    <input type="submit" value="submit">
+    </form>
+
+    <div id="details">
+    <h2>Data:</h2>
+    <div>
+    Name:<%=arr.x%>
+    </div>
+    <div>
+    Email:<%=arr.y%>
+    </div>
+    <div>
+    Phone:<%=arr.z%>
+    </div>
+    <div>
+    Address:<%=arr.p%>
+    </div>
+    </div>
+
+    <div id="details">
+    <!-- <%=JSON.stringify(array, null, 4)%> -->
+    <%for(i=0;i<array.length;i++){%>
+        <li>
+        Name:<%=array[i].name%>
+        <br>
+         Email:<%=array[i].email%>
+         <br>
+          Phone:<%=array[i].phone%>
+          <br>
+           Address:<%=array[i].address%>
+           <br>
+
+        </li>
+        <%}%>
+
+    </div>
+   
+   
+
+</body>
+</html>

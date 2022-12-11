@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>todos</p>
+
+    <input
+      type="text"
+      name="name"
+      id="name"
+      placeholder="What needs to be done?"
+    />
+
+    <div>
+      <ul id="list"></ul>
+    </div>
+    <div class="footer">
+            <span class="todo-count">
+                <strong id="counter">0</strong> items left
+            </span>
+			<ul class="filters">
+				<li>
+					<a id="all">All</a>
+				</li>
+				<li>
+					<a id="active">Active</a>
+				</li>
+				<li>
+					<a id="completed">Completed</a>
+				</li>
+			</ul>
+			<button id="clear-completed">Clear completed</button>
+        </div>
+
+
+    <script>
+      var x = document.getElementById("name").value;
+      console.log(x);
+
+      class TodoItemModel {
+        constructor(caption, isCompleted) {
+          this.caption = caption;
+          this.isCompleted = isCompleted;
+        }
+        toggle() {
+          this.isCompleted = !this.isCompleted;
+        }
+      }
+      class AppModel {
+        constructor() {
+          this.todoCollection = [];
+        }
+        addTodoItem(todoItem) {
+          this.todoCollection.push(todoItem);
+
+          for (let i in this.todoCollection) {
+            var itemDom = document.createElement("li");
+            var itemCheckbox = document.createElement("input");
+            itemCheckbox.type = "checkbox";
+            var itemCaption = document.createElement("span");
+            itemCaption.innerHTML = this.todoCollection[i].caption;
+            var itemDeleteBtn = document.createElement("button");
+            itemDeleteBtn.innerHTML = "x";
+            itemDom.appendChild(itemCheckbox);
+            itemDom.appendChild(itemCaption);
+            itemDom.appendChild(itemDeleteBtn);
+            document.getElementById("list").appendChild(itemDom);
+          }
+        }
+      }
+      const todoItem = new TodoItemModel(x, false);
+      console.log(todoItem);
+      const appModel = new AppModel();
+      appModel.addTodoItem(todoItem);
+    </script>
+  </body>
+</html>

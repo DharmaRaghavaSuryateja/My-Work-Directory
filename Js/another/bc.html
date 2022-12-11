@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+
+        }
+
+
+
+        .sidebar {
+            position: fixed;
+            background-color: blue;
+            width: 240px;
+            height: 100%;
+        }
+
+        .sidebar .logodetails {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar .logodetails i {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            /*background-color: red;*/
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .sidebar .logodetails .logoname {
+            font-size: 24px;
+            font-weight: 500;
+            color: white;
+            margin-left: 6px;
+        }
+
+        .sidebar .links {
+            margin-top: 16px;
+        }
+
+        .sidebar .links li {
+            height: 50px;
+            width: 100%;
+            align-items: center;
+            list-style: none;
+
+        }
+
+        .sidebar .links li a {
+            text-decoration: none;
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            transition: all 0.5s ease;
+
+
+        }
+
+        .sidebar .links li a:hover {
+            background: red;
+        }
+
+        .sidebar .links li a i {
+            /*background-color: red;*/
+            min-width: 60px;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+
+        }
+
+        .sidebar .links li a .link_name {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .home {
+            min-height: 100vh;
+            background-color: rgb(241, 241, 241);
+            width: calc(100% - 240px);
+            position: relative;
+            left: 240px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: white;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+
+        }
+
+        .sidebar.active {
+            width: 60px;
+        }
+
+        .sidebar.active~.home {
+            left: 60px;
+            width: calc(100% - 60px);
+        }
+
+        .home .header .sidebarbutton {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+
+        }
+
+        .home .header .sidebarbutton i {
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+        .header .searchh {
+
+            display: flex;
+            align-items: center;
+
+        }
+
+        .header .searchh input {
+
+            position: absolute;
+            width: 150px;
+            height: 30px;
+            outline: none;
+
+
+
+        }
+
+        .header .searchh i {
+
+            display: flex;
+            position: absolute;
+            margin-left: 140px;
+
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 25px;
+            background-color: red;
+
+
+
+        }
+
+        .card1 {
+            flex: 200px;
+            background-color: red;
+        }
+
+        .card2 {
+            flex: 300px;
+            background-color: blue;
+        }
+
+        @media screen and (max-width: 700px) {
+            .home .header .searchh {
+                display: none;
+                
+
+            }
+
+            .home .header .dashboard {
+                display: none;
+            }
+            .cards
+            {
+                flex-wrap: wrap;
+                display: flex;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logodetails">
+            <i class='bx bxl-python'></i>
+            <span class="logoname">
+                Python
+            </span>
+
+        </div>
+        <ul class="links">
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">icons</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Stocks</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Analytics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bxl-python'></i>
+                    <span class="link_name">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="home">
+        <div class="header">
+            <div class="sidebarbutton">
+                <i class='bx bx-menu sidebarbn'></i>
+                <span class="dashboard">Dashboard</span>
+
+            </div>
+            <div class="searchh">
+                <input type="search" name="" id="" placeholder="search">
+                <i class='bx bx-search'></i>
+
+
+            </div>
+            <div class="user">
+                <span>Suryateja</span>
+                <i class='bx bx-chevron-down'></i>
+
+            </div>
+
+        </div>
+        <div class="cards" style="display:flex ;width: 100%;height: 600px;">
+            <div class="card1">
+
+            </div>
+            <div class="card2">
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <script src="abc.js"></script>
+
+
+</body>
+
+</html>

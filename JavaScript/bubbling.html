@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Bubbling is down to up and capturing propogates up to down -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.addEventListener("load", function () {
+        document.getElementById("div1").addEventListener("click", fun1, false);
+        document.getElementById("div2").addEventListener("click", fun2, false);
+        document.getElementById("div3").addEventListener("click", fun3, false);
+
+        function fun1(e) {
+          e.target.style.backgroundColor = "red";
+          console.log("a");
+          e.stopPropagation();
+        }
+        function fun2(e) {
+          e.target.style.backgroundColor = "green";
+          console.log("b");
+           e.stopPropagation();
+        }
+        function fun3(e) {
+          e.target.style.backgroundColor = "blue";
+          console.log("c");
+           e.stopPropagation();
+        }
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="div1">
+      <button>click1</button>
+      <div id="div2">
+        <button>click2</button>
+        <div id="div3">
+          <button>click3</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

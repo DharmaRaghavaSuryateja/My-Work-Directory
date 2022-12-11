@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="abc" style="background-color: blue;">
+        Click
+    </div>
+    <script>
+        var x = document.getElementById('abc');
+        x.addEventListener('click', function () {
+            x.style.backgroundColor = "red";
+            x.innerHTML = "Clicked Me";
+        });
+
+        // document.getElementById('abc').onclick = function (e) {
+        //     e.target.style.backgroundColor = "red";
+        // }
+
+
+
+
+    </script>
+</body>
+
+</html>

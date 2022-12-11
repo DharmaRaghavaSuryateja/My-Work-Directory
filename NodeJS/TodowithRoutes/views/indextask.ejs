@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>ToDo App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100"
+      rel="stylesheet"
+    />
+
+    <script src="server1.js"></script>
+  </head>
+  <style>
+    input[type="checkbox"]:checked + span.main {
+      text-decoration: line-through;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <h2>A Simple ToDo List App</h2>
+
+      <form action="/action/add" method="post">
+        <input type="text" name="liste" />
+        <button>Submit</button>
+      </form>
+
+      <h2>list</h2>
+
+      <% for(var i=0;i< list.length; i++){ %>
+      <form action="/action/<%=i%>" method="post">
+        <li>
+          <span id="surya">
+            <input
+              id="kk"
+              class="chec"
+              type="checkbox"
+              name="check"
+              value="<%=list[i]%>"
+            /><span class="main"><%=list[i]%></span>
+          </span>
+
+          <button type="submit">remove</button>
+        </li>
+      </form>
+      <%}%>
+      
+    </div>
+  </body>
+</html>

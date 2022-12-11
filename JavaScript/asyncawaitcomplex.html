@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function makerequest(loc) {
+            return new Promise((resolve, reject) => {
+                console.log(`making request to ${loc}`);
+                if (loc == "google") {
+                    resolve("hi");
+                }
+                else {
+                    reject("talk with google");
+                }
+            })
+        }
+
+        function getrequest(resp) {
+            return new Promise((resolve, reject) => {
+                console.log("processing");
+                resolve(`Extra info  ${resp}`);
+            })
+        }
+        async function display() {
+            try {
+                const resp = await makerequest("google");
+                console.log("resp recieved");
+                const y = await getrequest(resp);
+                console.log(y);
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
+        display();
+        console.log("block");
+
+
+    </script>
+</body>
+
+</html>

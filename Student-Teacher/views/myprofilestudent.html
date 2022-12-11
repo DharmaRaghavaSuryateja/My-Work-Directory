@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #heading {
+            display: flex;
+            justify-content: center;
+            background-color: #4299E1;
+            height: 50px;
+            align-items: center;
+            font-size: large;
+            letter-spacing: 2px;
+        }
+
+        #flex {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #button {
+            color: white
+        }
+
+        .card {
+
+            margin: 40px 50px;
+            border: 1px solid black;
+        }
+
+        #Fakeform {
+            display: flex;
+            width: 250px;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+
+<body>
+    <p id="heading">My Profile</p>
+    <div onclick="window.location.assign('studentCourse.html')">Go</div>
+    <div id="layout"></div>
+</body>
+<script>
+    async function fun() {
+        let response = await fetch("http://localhost:3333/myProfile", {
+            method: "post"
+        })
+        let data = await response.json();
+        console.log(data)
+
+        for (let i = 0; i < data.result.length; i++) {
+            let card = document.createElement("div")
+            card.className = "card"
+            let cardHeader = document.createElement("h5")
+            cardHeader.className = "card-header"
+            cardHeader.style.textAlign = "center"
+            cardHeader.style.backgroundColor = "#4299E1"
+            cardHeader.innerHTML = data.result[i].category
+            let cardBody = document.createElement("div")
+            cardBody.className = "card-body"
+            let cardTitle = document.createElement("h5");
+            cardTitle.className = "card-title"
+            cardTitle.style.textAlign = "center"
+            cardTitle.innerHTML = data.result[i].title;
+            let cardText = document.createElement("p")
+            cardText.className = "card-text"
+            cardText.style.textAlign = "center"
+            cardText.innerHTML = data.result[i].description
+            let div = document.createElement("div")
+            div.id = "flex"
+            let form1 = document.createElement("form")
+            form1.method = "post"
+            form1.action = '/markCompleted'
+            let a1 = document.createElement("a")
+            a1.className = "btn btn-primary"
+            a1.id = "button"
+            for (let k = 0; k < data.enrollTable.length; k++) {
+                if (data.result[i].id == data.enrollTable[k].cid) {
+                    if (data.enrollTable[k].isCompleted == true) {
+                        a1.innerHTML = "Mark as Pending"
+                        cardHeader.style.backgroundColor = "rgb(130, 205, 71)"
+                    }
+                    else {
+                        a1.innerHTML = "Mark as Completed"
+                        cardHeader.style.backgroundColor = "rgb(255, 100, 100)"
+
+                    }
+                }
+
+            }
+
+            let input11 = document.createElement("input")
+            input11.value = data.user.id;
+            input11.type = "hidden"
+            input11.name = "userid"
+            let input12 = document.createElement("input")
+            input12.value = data.result[i].id;
+            input12.type = "hidden"
+            input12.name = "courseid"
+            let input13 = document.createElement("input")
+            input13.type = "hidden"
+            input13.name = "isCompleted"
+            let form2 = document.createElement("form")
+            form2.id = "Fakeform"
+            form2.method = "post"
+            form2.action = "/studentRating"
+            let input = document.createElement("input")
+            input.type = "number"
+            input.id = "rating"
+            input.name = "rating"
+            input.placeholder = "0 to 5"
+            input.style.textAlign = "center"
+            let input21 = document.createElement("input")
+            input21.type = 'hidden'
+            input21.name = "cid"
+            input21.value = data.result[i].id
+            let a2 = document.createElement("a")
+            a2.className = "btn btn-primary"
+            a2.id = "button"
+            a2.innerHTML = "Rate"
+            let form3 = document.createElement("form")
+            form3.action = "/deleteCourse"
+            form3.method = "post"
+            let a3 = document.createElement("a")
+            a3.className = "btn btn-primary"
+            a3.id = "button"
+            a3.innerHTML = "Remove"
+            let input31 = document.createElement("input")
+            input31.value = data.user.id;
+            input31.type = "hidden"
+            input31.name = "userid"
+            let input32 = document.createElement("input")
+            input32.value = data.result[i].id;
+            input32.type = "hidden"
+            input32.name = "courseid"
+            form3.appendChild(a3)
+            form3.appendChild(input31)
+            form3.appendChild(input32)
+            form2.appendChild(input)
+            form2.appendChild(input21)
+            form2.appendChild(a2)
+            form1.appendChild(a1)
+            form1.appendChild(input11)
+            form1.appendChild(input12)
+            form1.appendChild(input13)
+            div.appendChild(form1)
+            div.appendChild(form2)
+            div.appendChild(form3)
+            cardBody.appendChild(cardTitle)
+            cardBody.appendChild(cardText)
+            cardBody.appendChild(div)
+            card.appendChild(cardHeader)
+            card.appendChild(cardBody)
+            document.getElementById("layout").appendChild(card)
+
+            a2.onclick = (e) => {
+                console.log(input.value)
+                if (input.value <= 5 && input.value >= 0 && input.value != "") {
+                    e.preventDefault();
+                    let x = parseInt(input.value) + parseInt(data.result[i].rating);
+                    console.log(x)
+                    input.value = Math.floor((x) / 2)
+                    form2.submit();
+                }
+            }
+
+            a3.onclick = (e) => {
+                e.preventDefault();
+
+                form3.submit();
+            }
+            a1.onclick = (e) => {
+                e.preventDefault()
+                for (let j = 0; j < data.enrollTable.length; j++) {
+                    if (data.result[i].id == data.enrollTable[j].cid) {
+                        input13.value = !(data.enrollTable[j].isCompleted)
+                        form1.submit();
+                    }
+                }
+
+            }
+
+
+        }
+
+    }
+    fun()
+</script>
+
+</html>

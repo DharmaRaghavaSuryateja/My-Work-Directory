@@ -1,0 +1,22 @@
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
+app.use(express.json());
+var cors = require("cors");
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
+var url = "mongodb://localhost:27017/MongoMVCFE";
+const mongoose = require("mongoose");
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.pluralize(null);
+const mvc = require("./mongomvcBE");
+var dbase = mongoose.connection;
+dbase.on("error", console.error.bind(console, "connection error:"));
+app.post("/addlist", mvc.addlist);
+app.post("/delete/:id", mvc.delete);
+app.post("/update/:ide", mvc.update);
+app.post("/deleteall", mvc.deleteall);
+app.get("/hey/:filterr?", mvc.output);
+
+app.listen(8080);

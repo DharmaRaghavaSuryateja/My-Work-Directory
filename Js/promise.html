@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function x(n)
+    {
+      return new Promise((resolve,reject)=>
+      { 
+        
+        setTimeout(()=>{
+          resolve(n);
+        },1000)
+      })
+    }
+    
+    x(10).then((n)=>
+    {
+        console.log(n)
+      return x(n*2);
+    }).then((n)=>{
+         console.log(n)
+      return x(n*2)
+    }).then((n)=>
+    {
+        console.log(n);
+    })
+
+  </script>
+</body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let x = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                const error = true;
+                if (!error) {
+                    document.write("resolved");
+                    resolve("Yes");
+                }
+                else {
+                    document.write("not resolved");
+                    reject("no");
+                }
+            }, 3000)
+        })
+
+
+        x.then(function (v) {
+            document.write(v);
+        }).catch(function (p) {
+            document.write(p);
+        })
+        console.log("kk")
+
+    </script>
+</body>
+
+</html>
+
+
+

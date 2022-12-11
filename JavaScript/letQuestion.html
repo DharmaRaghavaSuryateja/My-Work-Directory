@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h4 id="root"></h4>
+    <script>
+      var list = ["first", "second"];
+
+      for (let i in list) {
+        var li = document.createElement("li");
+        var textNode = document.createTextNode(list[i]);
+        var btn = document.createElement("button");
+        btn.innerHTML = "index";
+        console.log(i);
+        btn.onclick = function () {
+          alert("index is" + i);
+        };
+        li.appendChild(textNode);
+        li.appendChild(btn);
+        document.getElementById("root").appendChild(li);
+      }
+    </script>
+  </body>
+</html>

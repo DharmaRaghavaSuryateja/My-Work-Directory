@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="pr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor laudantium nobis modi fugiat harum iusto
+        placeat ipsa impedit expedita, ratione assumenda ipsam, quisquam omnis fuga ullam in natus autem ab iste
+        blanditiis accusantium. Consectetur quis, fugit aliquam error incidunt exercitationem.</p>
+    <button id="btn" onclick="display()">click</button>
+    <input type="text" id="txt">
+    <form action="" onsubmit="sub()" id="subm">
+        <input type="text" id="text1">
+        <input type="submit" value="submitted">
+    </form>
+    <script>
+        function display() {
+            let x = document.getElementById('pr');
+            if (x.style.display != 'none') {
+                x.style.display = 'none';
+            }
+            else {
+                x.style.display = 'block';
+            }
+        }
+        let y = document.getElementById('pr');
+
+        txt.addEventListener("keyup", function () {
+            alert("mouse over");
+        });
+
+        text1.onfocus = hey;
+        function hey(e) {
+            e.target.style.backgroundColor = 'red';
+        }
+
+        // text1.addEventListener('focus', function (e) {
+        //     e.target.style.backgroundColor = 'red';
+        // });
+        function sub() {
+            alert("submitt");
+        }
+        // txt.addEventListener("keyup", function () {
+        //     alert("mouse out");
+        // })
+        //keyup-evebnt triggeredwhen key is released....keydown event is triggered when key is pressed
+
+    </script>
+</body>
+
+</html>

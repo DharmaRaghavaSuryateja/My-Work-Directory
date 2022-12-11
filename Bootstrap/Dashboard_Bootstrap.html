@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://kit.fontawesome.com/515b06e286.js" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+    <style>
+        .rounded-full {
+            border-radius: 100%;
+        }
+
+        #wrapper {
+            overflow-x: hidden;
+
+        }
+
+        #sidebar-wrapper {
+            min-height: 100vh;
+            margin-left: -15rem;
+            -webkit-transition: margin 0.25s ease-out;
+            -moz-transition: margin 0.25s ease-out;
+            -o-transition: margin 0.25s ease-out;
+            transition: margin 0.25s ease-out;
+            background-color: #343548;
+
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 0rem;
+            font-size: 1.0rem;
+            color: white;
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 15rem;
+        }
+
+        #page-content-wrapper {
+            min-width: 100vw;
+        }
+
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: 0;
+        }
+
+        #menu-toggle {
+            cursor: pointer;
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 20px 30px;
+            color: white;
+        }
+
+        .list-group-item.active {
+
+            color: white;
+            font-weight: bold;
+            border: none;
+        }
+
+        table {
+
+            width: 46rem;
+            background-color: white;
+            padding-left: 30px;
+            padding-right: 20px;
+            border-radius: 5px;
+
+        }
+
+        table tr td,
+        th {
+            border-bottom: solid;
+        }
+
+        .flag {
+            width: 4rem;
+            height: 2.5rem;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 42% 50%);
+        }
+
+        .chatx {
+            clip-path: polygon(5% 9%, 0 0, 100% 0, 100% 100%, 5% 100%);
+            background-color: #DFE4F7;
+            padding: 3% 3% 3% 8%;
+        }
+
+        .chaty {
+            clip-path: polygon(0 0, 100% 0, 93% 9%, 94% 100%, 0 100%);
+            background-color: #DFE4F7;
+            padding: 3% 3% 3% 8%;
+
+        }
+
+
+
+        @media (min-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: 0;
+            }
+
+            #page-content-wrapper {
+                min-width: 0;
+                width: 100%;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: -15rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 fs-4 mb-2">
+                GeekyAnts
+            </div>
+            <h3 style="color:white;display: flex;font-size:1.0rem;padding-left: 30px;font-weight: normal;">Main</h3>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-transparent">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                        <path fill-rule="evenodd"
+                            d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                    </svg><span style="margin-left: 10px;">Dashboard</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                        <path
+                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                    </svg><span style="margin-left: 10px;">Calendar</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                    </svg><span style="margin-left: 10px;">Email</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
+                        <path
+                            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                    </svg><span style="margin-left: 10px;">UI Elements</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-file-earmark-break" viewBox="0 0 16 16">
+                        <path
+                            d="M14 4.5V9h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v7H2V2a2 2 0 0 1 2-2h5.5L14 4.5zM13 12h1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2h1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                    </svg><span style="margin-left: 10px;">Forms</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-pie-chart" viewBox="0 0 16 16">
+                        <path
+                            d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                    </svg><span style="margin-left: 10px;">Charts</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
+                        <path
+                            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z" />
+                    </svg><span style="margin-left: 10px;">Tables</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+                    </svg><span style="margin-left: 10px;">Icons</span>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-top:-4px;"
+                        fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path
+                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg><span style="margin-left: 10px;">Maps</span>
+                </a>
+            </div>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="row d-flex justify-content-between"
+                style="background-color:#DEE1EB;height:60px; margin-left: 0px;padding-right: 20px;">
+
+
+
+                <div class="col-1 col-lg-2 d-flex flex-row col-md-1 col-sm-1">
+                    <i class="fa-solid fa-bars" id="menu-toggle" style="display: flex;align-items: center;"></i>
+                    <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false"
+                        style="display: flex;align-items: center;">Create</a>
+
+                </div>
+
+                <div
+                    class="col-9 col-lg-5 col-md-10 col-sm-10 d-flex flex-row justify-content-between align-items-center">
+
+
+                    <li style="list-style-type: none;">
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2 " style="border-radius: 35px;width: 150px;height: 40px;"
+                                type="search" placeholder="Search" aria-label="Search">
+
+                        </form>
+                    </li>
+
+                    <li style="list-style-type: none;">
+                        <a class="nav-link dropdown-toggle text-dark btn-sm" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="background-color:#DEE1EB;">English</a>
+                    </li>
+
+
+                    <li style="list-style-type: none;">
+                        <i class="fa-regular fa-square" style="font-size:20px;padding-top: 5px;"></i>
+                    </li>
+
+                    <li style="list-style-type: none;">
+                        <i class="fa-regular fa-bell" style="font-size:20px;padding-top: 5px;"></i>
+                    </li>
+
+                    <li style="list-style-type: none;">
+                        <i class="fa-regular fa-user" style="font-size:20px;padding-top: 5px;"></i>
+                    </li>
+
+
+                </div>
+
+
+            </div>
+            <div class="row"
+                style="height:100px;background-color:#F8F8FA;margin-left: 0px;padding:10px 5px;font-weight: 500;padding-right: 15px;">
+                <div class="col">
+                    Dashboard
+                </div>
+                <div style="font-weight:400;display: flex;justify-content: space-between;">
+                    <medium>
+                        Welcome to Veltrix Dashboard
+                    </medium>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm">Settings</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row"
+                    style="background-color:#F8F8FA;margin-left: 0px;padding:10px 5px;font-weight: 500;padding-right:10px;">
+                    <div class="col-11 col-lg col-md-5 col-sm-11 mx-3 my-2"
+                        style="background-color:#616ED3;border-radius: 5px;padding-top:10px;padding-bottom: 10px;padding-right: 10px;">
+                        <div style="display:flex;justify-content:space-between;">
+                            <div
+                                style="width:45px;height:45px;box-sizing: border-box;background-color:rgba(122,132,219,255);text-align: center;padding-top: 9px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-tablet" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
+                                    <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                </svg>
+
+                            </div>
+                            <div style="color: white;">
+
+                                ORDERS
+                                <br>
+
+                                <div style="display: flex;">
+
+
+
+                                    <div style="font-size:20px;color:white;margin-top: 10px;">
+                                        1,685</div>
+                                    <div style="margin-top:15%;margin-left:25% ;color: darkgreen;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="flag" style="background-color:green;float:right;margin-right:-10px;">
+                                <span style="float: right;">
+                                    +12%
+                                </span>
+
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        <div style="font-weight: 400;display: flex;justify-content: space-between;color: white;">
+                            <div>
+                                Since last month
+                            </div>
+                            <div style="font-weight: 900 ;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-11 col-lg col-md-5 col-sm-11 mx-3 my-2"
+                        style="background-color: #616ED3;border-radius: 5px;box-sizing: border-box;padding-top:10px;padding-bottom: 10px;padding-right: 10px;">
+
+                        <div style="display:flex;justify-content:space-between;">
+                            <div
+                                style="width:45px;height:45px;box-sizing: border-box;background-color:rgba(122,132,219,255);text-align: center;padding-top: 9px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-file-earmark-break" viewBox="0 0 16 16">
+                                    <path
+                                        d="M14 4.5V9h-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v7H2V2a2 2 0 0 1 2-2h5.5L14 4.5zM13 12h1v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2h1v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2zM.5 10a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H.5z" />
+                                </svg>
+
+                            </div>
+                            <div style="color: white;">
+
+                                REVENUE
+                                <br>
+
+                                <div style="display: flex;">
+
+
+
+                                    <div style="font-size:20px;color:white;margin-top: 10px;">
+                                        52,368</div>
+                                    <div style="margin-top:15%;margin-left:25% ;color:#EC4461 ;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="flag" style="background-color:#EC4461;float:right;margin-right:-10px;">
+                                <span style="float: right;">
+                                    -28%
+                                </span>
+
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        <div style="font-weight: 400;display: flex;justify-content: space-between;color: white;">
+                            <div>
+                                Since last month
+                            </div>
+                            <div style="font-weight: 900 ;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-11 col-lg col-md-5 col-sm-11 mx-3 my-2"
+                        style="background-color:#616ED3;border-radius: 5px;padding-top:10px;padding-bottom: 10px;padding-right: 10px;">
+                        <div style="display:flex;justify-content:space-between;">
+                            <div
+                                style="width:45px;height:45px;box-sizing: border-box;background-color:rgba(122,132,219,255);text-align: center;padding-top: 9px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                </svg>
+
+                            </div>
+                            <div style="color: white;">
+
+                                AVERAGE PRICE
+                                <br>
+
+                                <div style="display: flex;">
+
+
+
+                                    <div style="font-size:20px;color:white;margin-top: 10px;">
+                                        15.8</div>
+                                    <div style="margin-top:15%;margin-left:25% ;color: darkgreen;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="flag" style="background-color:#38A5F7;float:right;margin-right:-10px;">
+                                <span style="float: right;">
+                                    00%
+                                </span>
+
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        <div style="font-weight: 400;display: flex;justify-content: space-between;color: white;">
+                            <div>
+                                Since last month
+                            </div>
+                            <div style="font-weight: 900 ;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-11 col-lg col-md-5 col-sm-11 mx-3 my-2"
+                        style="background-color:#616ED3;border-radius: 5px;padding-top:10px;padding-bottom: 10px;padding-right: 10px;">
+                        <div style="display:flex;justify-content:space-between;">
+                            <div
+                                style="width:45px;height:45px;box-sizing: border-box;background-color:rgba(122,132,219,255);text-align: center;padding-top: 9px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-briefcase" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z" />
+                                </svg>
+
+                            </div>
+                            <div style="color: white;">
+
+                                PRODUCT SOLD
+                                <br>
+
+                                <div style="display: flex;">
+
+
+
+                                    <div style="font-size:20px;color:white;margin-top: 10px;">
+                                        2,436</div>
+                                    <div style="margin-top:15%;margin-left:25% ;color: darkgreen;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                        </svg>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                            <div class="flag" style="background-color:#F8B425;float:right;margin-right:-10px;">
+                                <span style="float: right;">
+                                    +84%
+                                </span>
+
+                            </div>
+
+
+                        </div>
+                        <br>
+
+                        <div style="font-weight: 400;display: flex;justify-content: space-between;color: white;">
+                            <div>
+                                Since last month
+                            </div>
+                            <div style="font-weight: 900 ;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row"
+                    style="background-color:white;margin-left: 0px; padding:10px 5px;padding-right: 20px;margin-left: 5px;background-color:#F8F8FA;padding-left: 18px;">
+
+
+                    <table cellspacing="0" class="col-12 col-lg col-md-12 col-sm-12">
+                        <tr>
+                            <th colspan="6" align="left">Latest Transaction</th>
+                        </tr>
+
+                        <tr align="left">
+                            <th>(#)id</th>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th> Status</th>
+                            <th></th>
+                        </tr>
+                        <tr align="left">
+                            <th>(#)14256</th>
+                            <td><img src="./img-1.webp" width="30px" height="30px" style="border-radius: 50%;"><span
+                                    style="margin-left: 40px;margin-top: -25px;display: block;">Philipe
+                                    Smead</span>
+                            </td>
+                            <td>15/1/2018</td>
+                            <td>$94</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Delivered</button>
+                            </td>
+                            <td><button type="button" class="btn btn-primary"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr align="left">
+                            <th>(#)14257</th>
+                            <td><img src="./img-2.jpg" width="30px" height="30px" style="border-radius: 50%;"><span
+                                    style="margin-left: 40px;margin-top: -25px;display: block;">Brent
+                                    Shipley</span>
+                            <td>16/1/2019</td>
+                            <td>$112</td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-sm"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Pending</button>
+                            </td>
+                            <td><button type="button" class="btn btn-primary"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr align="left">
+                            <th>(#)14258</th>
+                            <td><img src="./img-3.jpg" width="30px" height="30px" style="border-radius: 50%;"><span
+                                    style="margin-left: 40px;margin-top: -25px;display: block;">Robbert
+                                    Sitton</span>
+                            <td>17/1/2019</td>
+                            <td>$116</td>
+                            <td>
+                                <button type="button" class="btn btn-success btn-sm"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Delivered</button>
+                            </td>
+                            <td><button type="button" class="btn btn-primary"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Edit</button>
+                            </td>
+                        </tr>
+
+                        <tr align="left">
+                            <th>(#)14259</th>
+                            <td><img src="./img-2.jpg" width="30px" height="30px" style="border-radius: 50%;"><span
+                                    style="margin-left: 40px;margin-top: -25px;display: block;">Alberto
+                                    Jackson</span>
+                            <td>18/1/2019</td>
+                            <td>$109</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Cancel</button>
+                            </td>
+                            <td><button type="button" class="btn btn-primary"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Edit</button>
+                            </td>
+                        </tr>
+                        <tr align="left">
+                            <th style="border-bottom: none;">(#)14260</th>
+                            <td style="border-bottom: none;"><img src="./img-1.webp" width="30px" height="30px"
+                                    style="border-radius: 50%;"><span
+                                    style="margin-left: 40px;margin-top: -25px;display: block;">David
+                                    Sanchez</span>
+                            <td style="border-bottom: none;">19/1/2019</td>
+                            <td style="border-bottom: none;">$120</td>
+                            <td style="border-bottom: none;">
+                                <button type="button" class="btn btn-success btn-sm"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Delivered</button>
+                            </td>
+                            <td style="border-bottom: none;"><button type="button" class="btn btn-primary"
+                                    style="height: 20px; display: flex;align-items:center;font-size: 10px;">Edit</button>
+                            </td>
+                        </tr>
+                    </table>
+
+
+
+                    <div class="col-12 col-lg-4 col-md-12 col-sm-12 mx-3 my-2 pt-2" style="background-color:white;">
+                        <h5>Chat</h5>
+                        <div class="chat" style="margin-top:20px;">
+
+                            <div class="chat1" style="display:flex;justify-content: flex-start;margin-top: 20px;">
+
+                                <div>
+                                    <img src="./img-1.webp" alt="" width="30px" height="30px"
+                                        style="border-radius: 50%">
+                                    <div style="font-size: 12px;margin-left: 4px;">10:00</div>
+                                </div>
+
+                                <div class="chatx">
+                                    <div style="text-align: center;color: #6069C6;">
+                                        <strong style="padding-left:15px ;"> John Deo</strong>
+                                        <div style="font-size: 13px;">
+                                            Hello
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="chat2" style="display: flex;justify-content: flex-end;margin-top: 20px;">
+                                <div class="chaty">
+                                    <div style="text-align: center;color: #6069C6;">
+                                        <strong>Smith</strong>
+                                        <div style="font-size: 13px;color: #9DA5A9;">
+                                            Hi,How are you?What about our Meeting?
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <img src="./img-2.jpg" alt="" width="30px" height="30px" style="border-radius: 50%">
+                                    <div style="font-size: 12px;">10:01</div>
+                                </div>
+
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="chat3" style="display: flex;justify-content: flex-start;margin-top: 20px;">
+                            <div>
+                                <img src="./img-3.jpg" alt="" width="30px" height="30px" style="border-radius: 50%;">
+                                <div style="font-size: 12px;">10:00</div>
+                            </div>
+                            <div class="chatx">
+                                <div style="text-align: center;color: #6069C6;">
+                                    <strong> John Deo</strong>
+                                    <div style="text-align: center;font-size: 13px;">
+                                        Yeah Everything is Fine
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat4" style="display: flex;justify-content: flex-end;margin-top: 20px;">
+
+
+
+                            <div class="chaty">
+                                <div style="text-align: center;color: #6069C6;">
+                                    <strong>Smith</strong>
+                                    <div style="padding-top: 15px;text-align: center;font-size: 13px;color: #9DA5A9;">
+                                        Wow that's great
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <img src="./img-2.jpg" alt="" width="30px" height="30px" style="border-radius: 50%">
+                                <div style="font-size: 12px;">10:01</div>
+                            </div>
+
+                        </div>
+
+                        <div style="margin-top: 20px;">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Enter your Text"
+                                    aria-label="Search">
+                                <button class="btn btn-success" type="submit">Send</button>
+                            </form>
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var el = document.getElementById("wrapper");
+        var toggleButton = document.getElementById("menu-toggle");
+
+        toggleButton.onclick = function () {
+            el.classList.toggle("toggled");
+        };
+    </script>
+</body>
+
+</html>

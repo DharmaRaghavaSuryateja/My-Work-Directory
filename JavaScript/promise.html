@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let x = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                const error = true;
+                if (!error) {
+                    document.write("resolved");
+                    resolve("Yes");
+                }
+                else {
+                    document.write("not resolved");
+                    reject("no");
+                }
+            }, 3000)
+        })
+
+
+        x.then(function (v) {
+            document.write(v);
+        }).catch(function (p) {
+            document.write(p);
+        })
+
+    </script>
+</body>
+
+</html>

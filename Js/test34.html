@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="hlo"></div>
+    <button id="btn">stop</button>
+    <script>
+        //cannot support hoisting
+        // let x = (name) => {
+        //     document.write("hello" + name);
+        // }
+        // x("hello");
+        // y();
+        // function y() {
+        //     document.write("normal");
+        // }
+        const x = {
+            name: "he",
+            age: 10,
+            display: function (place) {
+                document.write(this.name + this.age + place);
+            },
+            display2: (place) => {
+                document.write(x.name + " kk" + x.age + place);
+            }
+        }
+        x.display("mum");
+        x.display2("kkk");
+        const y = setInterval(p, 1000);
+        function p() {
+            console.log("hh");
+        }
+
+        btn.onclick = function () {
+            clearInterval(y);
+        }
+
+
+    </script>
+</body>
+
+</html>

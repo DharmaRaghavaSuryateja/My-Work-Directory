@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript Promise</h2>
+
+
+
+    <script>
+
+
+        let p = new Promise(function (myResolve, myReject) {
+            let x = 0;
+
+            // some code (try to change x to 5)
+
+            if (!x) {
+                myResolve("OK");
+            } else {
+                myReject("Error");
+            }
+        });
+
+
+        p.then(function (v) { document.write(v); }).catch(function (j) { document.write(j); });
+    </script>
+
+</body>
+
+</html>

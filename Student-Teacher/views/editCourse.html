@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <style>
+        body {
+            padding: 100px 50px 0 50px;
+        }
+
+        h1 {
+            padding-bottom: 20px;
+        }
+
+        #example {
+            width: -webkit-fill-available;
+
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            async function fun() {
+                let response = await fetch("http://localhost:3333/editCourse", {
+                    method: "post",
+                    headers: {
+                        "Content-type": "application/json",
+                    }
+                })
+                let a = await fetch("http://localhost:3333/random", {
+                    method: "post"
+                });
+                let b = await a.json()
+                let data = await response.json()
+                console.log(data)
+                let inputTitle = document.createElement("input")
+                inputTitle.type = "text"
+                inputTitle.value = data.message.title
+                inputTitle.className = "form-control"
+                inputTitle.name = "title"
+                inputTitle.id = "example"
+                document.getElementById("lbl1").appendChild(inputTitle)
+                let select = document.createElement("select")
+                select.className="form-control"
+                select.name="category"
+                for (let i = 0; i < b.data.length; i++) {
+                    let option = document.createElement("option")
+                    option.value = b.data[i].category
+                    option.innerHTML = b.data[i].category
+                    select.appendChild(option)
+                }
+                document.getElementById("lbl2").appendChild(select)
+                let inputDescription = document.createElement("textarea")
+                inputDescription.type = "text"
+                inputDescription.value = data.message.description
+                inputDescription.className = "form-control"
+                inputDescription.id = "example"
+                inputDescription.name = "description"
+                document.getElementById("lbl3").appendChild(inputDescription)
+                let inputRunningTime = document.createElement("input")
+                inputRunningTime.type = "text"
+                inputRunningTime.value = data.message.runningTime
+                inputRunningTime.className = "form-control"
+                inputRunningTime.id = "example"
+                inputRunningTime.name = "runningTime"
+                document.getElementById("lbl4").appendChild(inputRunningTime)
+                let button = document.createElement("button")
+                button.className = "btn btn-primary"
+                button.innerHTML = "Save"
+                document.getElementById("btn").appendChild(button)
+                button.onclick = () => {
+                    document.getElementById("form").submit()
+                }
+            }
+            fun()
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Edit Course</h1>
+    <form action="/saveEditedCourse" method="post" id="form">
+        <div class="form-group" id="lbl1">
+            Title
+
+        </div>
+        <div class="form-group" id="lbl2">
+            <label for="exampleInputPassword1">Category:</label>
+            
+
+        </div>
+        <div class="form-group" id="lbl3">
+            <label for="exampleInputPassword1">Description</label>
+
+        </div>
+        <div class="form-group" id="lbl4">
+            <label for="exampleInputPassword1kk">Running Time</label>
+
+        </div>
+        <div class="form-group" id="lbl5">
+            <label class="form-label" for="customFile">Choose Image</label>
+            <input type="file" class="form-control" id="customFile" name="image" id="image">
+        </div>
+        <div id="form">
+
+        </div>
+
+        <div id="btn">
+
+
+        </div>
+    </form>
+    <script>
+
+        // function getParameterByName(name, url = window.location.href) {
+        //     name = name.replace(/[\[\]]/g, '\\$&');
+        //     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        //         results = regex.exec(url);
+        //     if (!results) return null;
+        //     if (!results[2]) return '';
+        //     return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        // }
+        // var a = getParameterByName('id')
+        // let id = document.createElement("input")
+        // id.setAttribute("type", "hidden")
+        // id.setAttribute("name", "id")
+        // id.setAttribute("value", a)
+        // document.getElementById("form").appendChild(id)
+        // console.log(a + "llp")
+    </script>
+</body>
+
+</html>

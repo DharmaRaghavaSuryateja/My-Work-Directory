@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="k" onclick="msg()" style="background-color: blue;">hello</p>
+    <script>
+        var state = 0
+        function msg() {
+            if (state == 0) {
+                document.getElementById('k').style.backgroundColor = 'red';
+                state = 1;
+            }
+            else {
+                document.getElementById('k').style.backgroundColor = 'blue';
+                state = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>

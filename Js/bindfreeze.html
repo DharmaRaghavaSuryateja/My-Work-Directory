@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let person = {
+        firstName: "surya",
+        lastName: "teja",
+      };
+      let person2 = {
+        firstName: "sur",
+        lastName: "te",
+      };
+      let fullName = function (state, country) {
+        return (
+          this.firstName + " " + this.lastName + " " + state + " " + country
+        );
+      };
+      let x = fullName.bind(person2, null, "kk");
+      document.write(x);
+      document.write(x("pp"));
+      // let fullName = function (state, country) {
+      //     document.write(this.firstName + " " + this.lastName + " " + state + " " + country);
+      // }
+      // fullName.call(person, "kk", "jj");
+      // let sum=function(a,b)
+      // {
+      //   return a+b;
+      // }
+      // let sum1=sum.bind(null,10);
+      // document.write(sum1(8));
+    </script>
+  </body>
+</html>

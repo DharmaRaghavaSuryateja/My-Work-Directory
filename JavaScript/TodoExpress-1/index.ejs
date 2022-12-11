@@ -1,0 +1,111 @@
+<!-- <!DOCTYPE html>
+
+<head>
+    <title>Todo App</title>
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <style>
+        /* h2 {
+            background-color: aqua;
+            justify-content: space-around;
+            width: 200px;
+            display: flex;
+            margin: auto;
+
+        }
+
+        .todo-header {
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .todo-list {
+
+            display: flex;
+            justify-content: center;
+        } */
+    </style>
+</head>
+
+<body>
+
+     <h2>To-Do List</h2>
+    <br>
+    <div class="todo">
+        <form action="/" method="POST" class="todo-header">
+            <input type="text" name="content">
+            <button type="submit"><span class="fas fa-plus"></span></button>
+        </form>
+        <ul class="todo-list">
+            <li class="todo-list-item">
+                <div class="todo-list-item-name">Some Text</div>
+                <a href="" class="edit">
+                    <span class="fas fa-edit"></span>
+                </a>
+                <a href="" class="remove">
+                    <span class="fas fa-times"></span>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+
+<!-- <%for (var i=0;i<task.length;i++){ %>
+        <li>
+            <%=task[i].caption%>
+        </li>
+        <%}%>
+            <form action="/addTodo" method="post">
+                <input type="text" name="caption">
+                <input type="submit" value="submit">
+            </form>
+
+
+</body> -->
+<html>
+  <head>
+    <title>ToDo App</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100"
+      rel="stylesheet"
+    />
+    <link href="/styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>A Simple ToDo List App</h2>
+
+      <form action="/addtask" method="POST">
+        <input type="text" name="newtask" placeholder="add new task" />
+        <button>Add Task</button>
+
+        <h2>Added Task</h2>
+
+        <% for( var i=0; i < task.length; i++){ %>
+        <li>
+          <input type="checkbox" name="check" value="<%= task[i] %>" />
+          <%= task[i] %>
+        </li>
+        <% } %>
+        
+
+        <button formaction="/removetask" type="submit" id="top">Remove</button>
+      </form>
+
+      <h2>Completed task</h2>
+      <form action="/del" method="post">
+        <% for(var i=0; i < complete.length; i++){ %>
+        <li>
+          <input type="checkbox" name="chek" value="<%= complete[i] %>"  checked/>
+          <%= complete[i] %>
+        </li>
+        <% } %>
+
+        <button type="submit">Remove</button>
+      </form>
+    </div>
+  </body>
+</html>

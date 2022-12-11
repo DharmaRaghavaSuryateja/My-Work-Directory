@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/515b06e286.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/515b06e286.js" crossorigin="anonymous"></script>
+
+    <style>
+        #heading {
+            display: flex;
+            padding: 20px 0;
+            justify-content: center;
+            font-size: 25px;
+            color: black;
+        }
+
+        .filter,
+        .span {
+            padding: 5px 30px;
+        }
+
+        #span,
+        #dive {
+
+            padding: 5px 30px;
+        }
+
+        .spann {
+            margin-left: 30px;
+        }
+
+        #headingName {
+
+            font-size: large;
+        }
+
+        #headerbelow {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 100px 0 100px;
+            margin-bottom: 40px;
+        }
+
+        #headerbelow.active {
+            padding: 20px 20px 0 20px;
+        }
+
+        #apply {
+            background-color: #6366F1;
+            width: 40px;
+            border-radius: 5px;
+            margin-left: 8px;
+        }
+
+        #sorting {
+            text-align: center;
+            border: 0.2px solid black;
+
+        }
+
+        #filtertitle {
+            padding: 5px 30px;
+            font-weight: 600;
+        }
+
+        #flexbutton {
+            display: flex;
+            justify-content: space-between;
+            width: 250px;
+            margin-top: 20px;
+            padding: 0 25px;
+        }
+
+        label {
+            display: block;
+            font: 1rem "Fira Sans", sans-serif;
+        }
+
+        input,
+        label {
+            margin: 0.4rem 0;
+            border-radius: 5px;
+        }
+
+        #navbar {
+            width: 18vw;
+            height: 100vh;
+            background-color: #4299E1;
+            left: -18vw;
+            position: fixed;
+            overflow-y: scroll;
+        }
+
+        #navbar.active {
+            left: 0;
+            border-right: 1px solid black;
+        }
+
+        #main {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            overflow: scroll;
+
+        }
+
+        #main.active {
+            width: 82vw;
+            left: 18vw;
+            overflow: scroll;
+        }
+
+        .subCardHeading {
+            padding: 15px 0;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            background-color: #4299E1;
+            display: flex;
+            justify-content: center;
+            margin: 40px 0 30px 0;
+            color: white;
+
+        }
+
+        #form1 {
+            padding: 0 10px;
+        }
+
+        @media(max-width:1279px) {
+            #navbar.active {
+                width: 236.7px;
+                z-index: 1;
+            }
+
+            #main.active {
+                left: 236.7px;
+                position: relative;
+
+            }
+        }
+
+        @media(max-width:768px) {
+            #innerheader {
+
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        @media(max-width:425px) {
+            #headerbelow {
+                padding: 10px 20px;
+            }
+
+            #site-search {
+                margin-top: 15px;
+            }
+        }
+
+        @media(max-width:375px) {
+            #upnav {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex;">
+        <div style="flex: 15%;" id="navbar">
+
+            <div id="heading">
+                Filter
+            </div>
+            <div id="filtertitle">
+                Running Time:
+            </div>
+            <div>
+                <div class="span">
+                    <input type="radio" name="runningTime" id="" value=10 class="filter"><span class="spann">Above 10
+                        Hours</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="runningTime" id="" value=20 class="filter"><span class="spann">Above 20
+                        Hours</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="runningTime" id="" value=30 class="filter"><span class="spann">Above 30
+                        Hours</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="runningTime" id="" value=40 class="filter"><span class="spann">Above 40
+                        Hours</span>
+                </div>
+            </div>
+            <div id="filtertitle">
+                Category:
+            </div>
+            <div id="category">
+
+            </div>
+            <div id="filtertitle">
+                Rating
+            </div>
+            <div>
+                <div class="span">
+                    <input type="radio" name="rating" id="" value=1 class="filter"><span class="spann">Above 1
+                        Star</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="rating" id="" value=2 class="filter"><span class="spann">Above 2
+                        Star</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="rating" id="" value=3 class="filter"><span class="spann">Above 3
+                        Star</span>
+                </div>
+                <div class="span">
+                    <input type="radio" name="rating" id="" value=4 class="filter"><span class="spann">Above 4
+                        Star</span>
+                </div>
+            </div>
+            <div id="flexbutton">
+                <button
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base ml-2 mt-4 md:mt-0"
+                    type="submit" id="navbarbtn">
+                    Apply
+                </button>
+                <button
+                    class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base ml-2 mt-4 md:mt-0"
+                    type="submit" id="clear">
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <div style="flex: 85%;" id="main">
+            <header class="text-gray-600 body-font" style="background-color: #4299e1">
+                <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center" id="innerheader">
+                    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0  mr-6">
+                        <span onclick="toggle()" style="display: flex;;"><i class="fa-solid fa-bars"></i></span>
+                    </a>
+                    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+                        <i class="fa-brands fa-readme"></i>
+                        <span class="ml-3 text-xl">Coursera</span>
+                    </a>
+                    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center" id="upnav">
+                        <form action="/myProfile" method="get" id="form1">
+                            <a class="mr-5 hover:text-gray-900" onclick="document.getElementById('form1').submit()">My
+                                Profile</a>
+                        </form>
+                        <div class="mr-5 hover:text-gray-900 rounded">
+                            <input type="search" id="site-search" name="search" />
+
+
+                        </div>
+                    </nav>
+                    <form action="/logout" method="post">
+                        <button
+                            class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base ml-2 mt-4 md:mt-0"
+                            type="submit" value="">
+                            Logout
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </header>
+            <div id="headerbelow">
+                <div id="headingName">
+                </div>
+                <div>
+                    <span>Sort : </span>
+                    <select name="sorting" id="sorting">
+                        <option value="title">Title</option>
+                        <option value="rating">Rating</option>
+                        <option value="runningTime">Duration</option>
+                    </select>
+                    <span><button id="apply">Go</button></span>
+                </div>
+
+
+            </div>
+            <div class="container px-5 mx-auto " id="layout"></div>
+
+        </div>
+
+
+
+        <script>
+            var state = 0;
+            var globalfilter = undefined;
+            class display {
+                //value is for search and x is for filters...x is an object
+                async render(value, x, sort) {
+                    console.log(sort);
+                    console.log(x);
+                    let valuee = value;
+                    //a,b are for fetching data from category table and since i am taking states they execute only once
+                    let a = await fetch("http://localhost:3333/random", {
+                        method: "post",
+                    });
+                    var b = await a.json();
+                    if (state == 0) {
+                        for (let i = 0; i < b.data.length; i++) {
+                            let option = document.createElement("input");
+                            option.className = "filter";
+                            option.name = "category";
+                            let span = document.createElement("span");
+                            let div = document.createElement("div");
+                            div.id = "dive";
+                            span.id = "span";
+                            option.type = "checkbox";
+                            option.value = b.data[i].category;
+                            option.innerHTML = b.data[i].category;
+                            span.innerHTML = b.data[i].category;
+                            div.appendChild(option);
+                            div.appendChild(span);
+                            document.getElementById("category").appendChild(div);
+                            state = 1;
+                        }
+                    }
+                    //response and data are for course data
+                    let response = await fetch("http://localhost:3333/teacher_courses", {
+                        method: "post",
+                        headers: {
+                            "Content-type": "application/json",
+                        },
+                    });
+                    var data = await response.json();
+                    //sort
+
+                    if (typeof sort !== "undefined") {
+                        data.data.sort(function (a, b) {
+                            if (sort == "runningTime") {
+                                return a.runningTime - b.runningTime;
+                            } else if (sort == "rating") {
+                                return a.rating - b.rating;
+                            }
+                        });
+                        if (sort == "title") {
+                            data.data.sort((a, b) =>
+                                a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1
+                            );
+                        }
+                    }
+                    console.log(data.data);
+
+                    //if x is undefined it remove child of all data
+                    // if (typeof x == "undefined") {
+                    //   let div = document.getElementById("structure");
+                    //   while (div.firstChild) {
+                    //     div.removeChild(div.firstChild);
+                    //   }
+                    // }
+
+                    //if search value is there then the below loop executes
+                    if (typeof value !== "undefined") {
+                        let div = document.getElementsByName("cardClass");
+                        for (let i = 0; i < b.data.length; i++) {
+                            while (div[i].firstChild) {
+                                div[i].removeChild(div[i].firstChild);
+                            }
+                        }
+                        let layout = document.getElementById("layout");
+                        while (layout.firstChild) {
+                            layout.removeChild(layout.firstChild);
+                        }
+
+                        console.log(data);
+                        data.data = data.data.filter((item) => {
+                            return item.title.includes(valuee) === true;
+                        });
+                        console.log(data.data);
+                    }
+                    //if filters are there then x is a object and below loop executes
+
+                    if (typeof x !== "undefined") {
+                        let div = document.getElementsByName("cardClass");
+                        if (div.length != 0) {
+                            for (let i = 0; i < b.data.length; i++) {
+                                while (div[i].firstChild) {
+                                    div[i].removeChild(div[i].firstChild);
+                                }
+                            }
+                            let layout = document.getElementById("layout");
+                            while (layout.firstChild) {
+                                layout.removeChild(layout.firstChild);
+                            }
+                        }
+
+                        if (x.rating) {
+                            data.data = data.data.filter((item) => {
+                                return item.rating > x.rating;
+                            });
+                        }
+
+                        if (typeof x.category !== "undefined") {
+                            data.data = data.data.filter((item) => {
+                                return x.category.includes(item.category);
+                            });
+                        }
+                        if (x.runningTime) {
+                            data.data = data.data.filter((item) => {
+                                return item.runningTime > x.runningTime;
+                            });
+                        }
+                    }
+
+                    document.getElementById("headingName").innerHTML = "Hi " + data.user.name;
+
+                    //printing of actual data
+                    for (let j = 0; j < b.data.length; j++) {
+                        let structure = document.createElement("div");
+                        structure.className = "flex flex-wrap -m-4";
+                        structure.setAttribute("name", "cardClass");
+                        let heading = document.createElement("div");
+                        let subHeading = document.createElement("div");
+                        let stat = 0;
+                        for (let i = 0; i < data.data.length; i++) {
+                            let card = document.createElement("form");
+                            card.method = "post";
+                            card.action = "http://localhost:3333/random1";
+                            card.className = "lg:w-1/4 md:w-1/2 p-4 w-full";
+                            let a = document.createElement("a");
+                            a.className = "block relative h-48 rounded overflow-hidden";
+                            let img = document.createElement("img");
+                            img.className = "object-cover object-center w-full h-full block";
+                            // let blobString = data.images[i]
+                            // console.log(blobString)
+                            // let bytes = new Uint8Array(blobString.data);
+                            // let binary = '';
+
+                            // for (let i = 0; i < bytes.byteLength; i++) {
+                            //   binary += String.fromCharCode(bytes[i]);
+                            // }
+
+                            // var base64String = window.btoa(binary);
+                            // console.log(base64String)
+
+                            // // Make a Blob from the bytes
+                            // let blob = new Blob([bytes], { type: 'image/bmp' });
+                            var base64 = btoa(
+                                new Uint8Array(data.images[i]).reduce(
+                                    (data, byte) => data + String.fromCharCode(byte),
+                                    ""
+                                )
+                            );
+
+                            // img.src = `data:image/png;base64,${base64}`;
+                            // img.src = URL.createObjectURL(blob);
+                            img.src =
+                                "https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
+
+                            let cardbody = document.createElement("div");
+                            cardbody.className = "mt-4";
+                            let category = document.createElement("h3");
+                            category.className =
+                                "text-gray-500 text-xs tracking-widest title-font mb-1";
+                            category.innerHTML = data.data[i].category;
+                            let title = document.createElement("h2");
+                            title.className = "text-gray-900 title-font text-lg font-medium";
+                            title.innerHTML = data.data[i].title;
+                            let runningTime = document.createElement("p");
+                            runningTime.className = "mt-1";
+                            runningTime.innerHTML = data.data[i].runningTime + " hours";
+                            let rating = document.createElement("p");
+                            rating.className = "mt-1";
+                            // rating.innerHTML = data.data[i].rating + " star";
+                            for (let k = 0; k < data.data[i].rating; k++) {
+                                let icon = document.createElement("span");
+                                icon.innerHTML = '<i class="fa-regular fa-star"></i>';
+                                rating.appendChild(icon);
+                            }
+                            if (data.data[i].rating == 0) {
+                                rating.innerHTML = "No ratings";
+                            }
+                            cardbody.appendChild(category);
+                            cardbody.appendChild(title);
+                            cardbody.appendChild(runningTime);
+                            cardbody.appendChild(rating);
+                            let id = document.createElement("input");
+                            id.setAttribute("type", "hidden");
+                            id.setAttribute("name", "id");
+                            id.setAttribute("value", data.data[i].id);
+                            a.appendChild(img);
+                            card.appendChild(a);
+                            card.appendChild(cardbody);
+                            card.appendChild(id);
+                            if (b.data[j].category == data.data[i].category) {
+                                if (stat == 0) {
+                                    subHeading.className = "subCardHeading";
+                                    subHeading.innerHTML = b.data[j].category;
+                                    stat = 1;
+                                }
+                                structure.appendChild(card);
+                                card.onclick = () => {
+                                    card.submit();
+                                };
+                            }
+                        }
+                        heading.appendChild(subHeading);
+                        heading.appendChild(structure);
+                        document.getElementById("layout").appendChild(heading);
+                    }
+
+                    document.getElementById("navbarbtn").onclick = () => {
+                        let variable = 0;
+                        var ele = document.getElementsByClassName("filter");
+                        var x = {};
+                        let listOfCats = [];
+                        for (let i = 0; i < ele.length; i++) {
+                            if (ele[i].checked) {
+                                if (ele[i].name === "category") {
+                                    listOfCats.push(ele[i].value);
+                                    x[ele[i].name] = listOfCats;
+                                } else {
+                                    x[ele[i].name] = ele[i].value;
+                                }
+                                variable = 1;
+                            }
+                        }
+                        globalfilter = x;
+                        if (variable !== 0) {
+                            let value = document.getElementById("site-search").value;
+                            console.log(value);
+
+                            app.render(value, x, document.getElementById("sorting").value);
+                        }
+                        if (variable == 0) {
+                            let value = document.getElementById("site-search").value;
+                            app.render(value, undefined, document.getElementById("sorting").value);
+                        }
+                    };
+                }
+            }
+
+            let app = new display();
+            app.render();
+            document.getElementById("site-search").onchange = () => {
+                if (true) {
+                    let value = document.getElementById("site-search").value;
+                    console.log(globalfilter);
+                    app.render(value, globalfilter, document.getElementById("sorting").value);
+                }
+            };
+            function toggle() {
+                document.getElementById("navbar").classList.toggle("active");
+                document.getElementById("main").classList.toggle("active");
+                document.getElementById("headerbelow").classList.toggle("active");
+            }
+            document.getElementById("clear").onclick = () => {
+                globalfilter = undefined;
+                let i = 0;
+                while (document.getElementsByClassName("filter")[i]) {
+                    document.getElementsByClassName("filter")[i].checked = false;
+                    i++;
+                }
+                // document.getElementById("site-search").value = "";
+
+                app.render(
+                    document.getElementById("site-search").value,
+                    undefined,
+                    undefined
+                );
+            };
+            //sorting
+            document.getElementById("apply").onclick = () => {
+                let value = document.getElementById("site-search").value;
+                console.log(document.getElementById("sorting").value);
+                app.render(value, globalfilter, document.getElementById("sorting").value);
+            };
+
+        </script>
+
+</body>
+
+</html>

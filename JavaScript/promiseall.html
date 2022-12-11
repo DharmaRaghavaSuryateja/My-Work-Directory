@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let first_promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Resolved First after 1 second");
+        }, 1000);
+      });
+
+      let second_promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Resolved First after 2 seconds");
+        }, 2000);
+      });
+
+      let third_promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("Resolved First after 3 seconds");
+        }, 3000);
+      });
+
+      try {
+        let result = Promise.all([
+          first_promise,
+          second_promise,
+          third_promise,
+        ]);
+        result.then((data) => document.write(data));
+      } catch (error) {
+        console.log(error);
+      }
+    </script>
+  </body>
+</html>

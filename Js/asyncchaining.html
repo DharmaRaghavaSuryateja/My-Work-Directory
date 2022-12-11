@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const x = (a, b, c) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve(a + b + c);
+          }, 1000);
+        });
+      };
+
+      const prog = async () => {
+        let a1 = await x(10, 20, 30);
+        let a2 = await x(a1, 30, 40);
+        let a3 = await x(a2, 50, 60);
+         console.log("hello")
+         console.log(a3)
+        return a3;
+      };
+     
+      prog().then((value) => {
+        console.log(value);
+      });
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function x(n)
+    {
+      return new Promise((resolve)=>
+      {
+        setTimeout(()=>{resolve(n*2)},1000);
+      })
+    }
+    x(10).then((resolve)=>{console.log(resolve);
+    return x(resolve);}).then((resolve)=>
+    {
+      console.log(resolve);
+    })
+  </script>
+</body>
+</html> -->

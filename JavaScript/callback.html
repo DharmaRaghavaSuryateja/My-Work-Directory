@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const student = ["surya", "ravi", "mohan"];
+        join = function (stud, callback) {
+            setTimeout(function () {
+                student.push(stud);
+                callback();
+                document.write("added");
+            }, 5000);
+
+        }
+        fetch = function () {
+            setTimeout(function () {
+                document.write(student)
+            }, 1000);
+        }
+        join("raju", fetch);
+
+
+    </script>
+</body>
+
+</html>

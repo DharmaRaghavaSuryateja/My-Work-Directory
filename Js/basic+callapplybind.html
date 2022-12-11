@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- JS SUPPORTS SINGLE AND DOUBLE QUOTE 
+onchange	An HTML element has been changed
+onclick	The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload      The browser has finished loading the page
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+Javascript objects cannot compared-->
+
+  <!-- var x = 10;
+// Here x is 10
+
+{
+var x = 2;
+// Here x is 2
+}
+// Here x is 2
+----------------------------------------------------
+let x = 10;
+// Here x is 10
+
+{
+let x = 2;
+// Here x is 2
+}
+
+// Here x is 10 -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function myFunction() {
+        document.getElementById("demo3").innerHTML = "Paragraph changed.";
+      }
+    </script>
+  </head>
+
+  <body>
+    <form action="" name="form1">
+      Enter :
+      <input type="text" name="name" id="idd" />
+      <button id="bb">Clickk</button>
+    </form>
+
+    <p id="demo">JavaScript can change HTML content.</p>
+
+    <button
+      onclick="document.getElementById('demo').innerHTML='Hello JavaScript!'"
+    >
+      Click Me!
+    </button>
+
+    <button
+      onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulbon.gif'"
+    >
+      Turn on the light
+    </button>
+
+    <img
+      id="myImage"
+      src="https://www.w3schools.com/js/pic_bulboff.gif"
+      style="width: 100px"
+    />
+
+    <button
+      onclick="document.getElementById('myImage').src='https://www.w3schools.com/js/pic_bulboff.gif'"
+    >
+      Turn off the light
+    </button>
+
+    <p id="demo1">JavaScript can change the style of an HTML element.</p>
+    <button onclick="msg()">chsnge</button>
+    <button onclick="document.getElementById('demo1').style.fontSize='10px'">
+      return
+    </button>
+    <button onclick="document.getElementById('demo1').style.display='none'">
+      remove
+    </button>
+    <button onclick="document.getElementById('demo1').style.display='block'">
+      show
+    </button>
+    <button
+      id="demo2"
+      onclick='document.getElementById("demo2").innerHTML = "my"'
+    >
+      hey
+    </button>
+    <button onclick="window.print()">Print this page</button>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    Product of 4 and 3:<span id="demo6"></span>
+    <button onclick="this.innerHTML=Date()">The time is?</button>
+    <p id="demo7"></p>
+
+    <script>
+      document.getElementById("bb").addEventListener("click", function () {
+        alert(document.form1.name.value);
+      });
+      function msg() {
+        document.getElementById("demo1").style.fontSize = "20px";
+      }
+      var x, y, z;
+      x = 5;
+      y = 6;
+      z = x + y;
+
+      document.getElementById("demo3").innerHTML =
+        "The value of z is " + z + ".";
+      document.getElementById("demo4").innerHTML = "John Doe";
+      const person = {
+        //object not function
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue",
+        fullName: function () {
+          return this.firstName + " " + this.lastName;
+        },
+      };
+
+      document.getElementById("demo5").innerHTML =
+        person.firstName +
+        " is " +
+        person.age +
+        " years old." +
+        person.fullName();
+
+      var b = myFunction(4, 3);
+      function myFunction(p1, p2) {
+        return p1 * p2;
+      }
+      document.getElementById("demo6").innerHTML = b;
+      const cars = ["Saab", "Volvo", "BMW"];
+      cars[0] = "Opel";
+      document.getElementById("demo7").innerHTML = cars;
+
+      const person1 = {
+        fullName: function (city, country) {
+          document.write(
+            this.firstName + " " + this.lastName + " " + city + " " + country
+          );
+        },
+      };
+
+      const person2 = {
+        firstName: "John",
+        lastName: "Doe",
+      };
+      const person3 = {
+        firstName: "Joh",
+        lastName: "Do",
+      };
+
+      person1.fullName.call(person2, `delhi`, `dubai`);
+      document.write("<br>");
+      person1.fullName.apply(person3, ["mumbai", "india"]);
+      document.write("<br>");
+      let surya = person1.fullName.bind(person3, "kol", "russ");
+      document.write(surya);
+      surya();
+    </script>
+  </body>
+
+  <!-- </html>
+
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JavaScript Arrays</h2>
+
+    <p>The push method appends a new element to an array.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo"></p>
+
+    <script>
+        const fruits = ["Banana", "Orange", "Apple"];
+        document.getElementById("demo").innerHTML = fruits;
+
+        function myFunction() {
+            fruits.push("Lemon");
+            document.getElementById("demo").innerHTML = fruits;
+        }
+    </script>
+
+</body>
+
+</html> -->
+</html>
